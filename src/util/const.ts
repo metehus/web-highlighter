@@ -3,10 +3,10 @@
  * cSpell:ignore mengshou
  */
 
-import type HighlightSource from '@src/model/source';
-import type { ERROR } from '@src/types';
-import camel from '@src/util/camel';
-import EventEmitter from '@src/util/event.emitter';
+import type HighlightSource from '../model/source';
+import type { ERROR } from '../types';
+import camel from '../util/camel';
+import EventEmitter from '../util/event.emitter';
 
 export const ID_DIVISION = ';';
 export const LOCAL_STORE_KEY = 'highlight-mengshou';

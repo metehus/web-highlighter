@@ -1,10 +1,10 @@
 {
-  "name": "web-highlighter",
-  "version": "0.7.4",
+  "name": "@metehus/web-highlighter",
+  "version": "0.8.3",
   "description": "✨A no-runtime dependency lib for text highlighting & persistence on any website ✨🖍️",
-  "main": "dist/web-highlighter.min.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "browser": "dist/web-highlighter.min.js",
+  "browser": "dist/index.js",
   "scripts": {
     "lint": "eslint \"src/**/*.ts\" --fix",
     "test": "mocha -r ts-node/register -r tsconfig-paths/register test/**.spec.ts",
@@ -15,26 +15,14 @@
     "build-example": "target=example node script/build.js",
     "static": "run-p watch serve",
     "start": "node script/dev.js",
-    "build:types": "tscpaths -p tsconfig.json -s ./src -o ./dist",
-    "build:code": "target=dist node script/build.js",
-    "build": "run-s build:code build:types",
-    "prepublishOnly": "run-s lint build test"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npm run test"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.ts": [
-      "prettier --write",
-      "eslint --fix"
-    ]
+    "build:types": "tsc",
+    "build:code": "npx swc src -d dist/ --source-maps",
+    "build": "rm -rf dist && run-s build:code build:types"
   },
   "homepage": "https://alienzhou.github.io/web-highlighter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alienzhou/web-highlighter"
+    "url": "https://github.com/metehus/web-highlighter"
   },
   "keywords": [
     "text",
@@ -45,10 +33,11 @@
     "selection",
     "range"
   ],
-  "author": "alienzhou <alienzhou16@163.com>",
+  "author": "alienzhou <alienzhou16@163.com>, metehus <methidezeeni@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
+    "@swc/cli": "^0.1.62",
+    "@swc/core": "^1.3.37",
     "@types/chai": "^4.2.11",
     "@types/jsdom": "^16.2.3",
     "@types/jsdom-global": "^3.0.2",
@@ -82,14 +71,14 @@
     "style-loader": "^0.23.1",
     "text-replace-html-webpack-plugin": "^1.0.3",
     "ts-loader": "^5.3.0",
-    "ts-node": "^8.10.1",
+    "ts-node": "^10.9.1",
     "tsconfig-paths": "^3.9.0",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "tscpaths": "0.0.9",
-    "typescript": "^4.1.3",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": ">=3.1.11",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^5.8.0"
   }
 }

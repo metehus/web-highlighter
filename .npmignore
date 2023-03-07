@@ -1,6 +1,10 @@
 /.git/
 /.vscode/
 /node/modules/
+/node_modules/
+example
+script
+test
 .gitignore
 .npmignore
 *.log

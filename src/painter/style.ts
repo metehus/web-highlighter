@@ -1,7 +1,7 @@
 /**
  * inject styles
  */
-import { STYLESHEET_ID, getStylesheet } from '@src/util/const';
+import { STYLESHEET_ID, getStylesheet } from '../util/const';
 
 export const initDefaultStylesheet = () => {
     const styleId = STYLESHEET_ID;

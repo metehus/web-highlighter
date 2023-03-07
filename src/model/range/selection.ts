@@ -4,8 +4,8 @@
  * https://caniuse.com/#search=selection
  */
 
-export const getDomRange = (): Range => {
-    const selection = window.getSelection();
+export const getDomRange = (_window: Window): Range => {
+    const selection = _window.getSelection();
 
     if (selection.isCollapsed) {
         // eslint-disable-next-line no-console
@@ -17,6 +17,6 @@ export const getDomRange = (): Range => {
     return selection.getRangeAt(0);
 };
 
-export const removeSelection = (): void => {
-    window.getSelection().removeAllRanges();
+export const removeSelection = (_window: Window): void => {
+    _window.getSelection().removeAllRanges();
 };

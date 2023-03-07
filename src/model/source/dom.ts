@@ -1,6 +1,6 @@
-import type { DomNode } from '@src//types';
-import type HighlightSource from '@src/model/source/index';
-import { ROOT_IDX } from '@src/util/const';
+import type { DomNode } from '../..//types';
+import type HighlightSource from '../../model/source/index';
+import { ROOT_IDX } from '../../util/const';
 
 /**
  * Because of supporting highlighting a same area (range overlapping),

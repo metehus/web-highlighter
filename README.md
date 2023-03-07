@@ -30,6 +30,11 @@
 
 English | [简体中文](https://github.com/alienzhou/web-highlighter/blob/master/README.zh_CN.md)
 
+> *Note*
+> This is a fork of [web-highlighter](https://github.com/alienzhou/web-highlighter) which fixes two problems, allowing to sue it on iframes and on chrome
+>
+
+
 ## Background
 
 It's from an idea: highlight texts on the website and save the highlighted areas just like what you do in PDF.

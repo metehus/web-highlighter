@@ -4,14 +4,14 @@
  * represents for a piece of chosen dom
  */
 
-import type { DomNode, HookMap } from '@src/types';
-import type Hook from '@src/util/hook';
-import HighlightSource from '@src/model/source/index';
-import { ERROR } from '@src/types';
-import { getDomRange, removeSelection } from '@src/model/range/selection';
-import uuid from '@src/util/uuid';
-import { getDomMeta, formatDomNode } from '@src/model/range/dom';
-import { eventEmitter, INTERNAL_ERROR_EVENT } from '@src/util/const';
+import type { DomNode, HookMap } from '../../types';
+import type Hook from '../../util/hook';
+import HighlightSource from '../../model/source/index';
+import { ERROR } from '../../types';
+import { getDomRange, removeSelection } from '../../model/range/selection';
+import uuid from '../../util/uuid';
+import { getDomMeta, formatDomNode } from '../../model/range/dom';
+import { eventEmitter, INTERNAL_ERROR_EVENT } from '../../util/const';
 
 class HighlightRange {
     static removeDomRange = removeSelection;
@@ -40,8 +40,8 @@ class HighlightRange {
         this.id = id;
     }
 
-    static fromSelection(idHook: Hook<string>) {
-        const range = getDomRange();
+    static fromSelection($root: Document | HTMLElement, idHook: Hook<string>) {
+        const range = getDomRange($root.ownerDocument.defaultView);
 
         if (!range) {
             return null;

@@ -9,9 +9,9 @@
             "dom.iterable",
             "es2015"
         ],
-        "target": "es5",
-        "downlevelIteration": true,
+        "target": "ESNext",
         "resolveJsonModule": true,
+        "moduleResolution": "nodenext",
         "baseUrl": ".",
         "paths": {
             "@src/*": ["./src/*"]

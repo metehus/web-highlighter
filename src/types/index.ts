@@ -1,4 +1,4 @@
-import type Hook from '@src/util/hook';
+import type Hook from '../util/hook';
 
 export type RootElement = Document | HTMLElement;
 

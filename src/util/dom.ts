@@ -1,10 +1,10 @@
-import type { RootElement } from '@src/types';
+import type { RootElement } from '../types';
 import {
     ID_DIVISION,
     DATASET_IDENTIFIER,
     CAMEL_DATASET_IDENTIFIER,
     CAMEL_DATASET_IDENTIFIER_EXTRA,
-} from '@src/util/const';
+} from '../util/const';
 
 /**
  * whether a wrapper node

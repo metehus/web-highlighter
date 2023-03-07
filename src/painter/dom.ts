@@ -1,7 +1,7 @@
-import type HighlightRange from '@src/model/range';
-import type { SelectedNode, DomNode } from '@src/types';
-import { SplitType, SelectedNodeType } from '@src/types';
-import { hasClass, addClass as addElementClass, isHighlightWrapNode, removeAllClass } from '@src/util/dom';
+import type HighlightRange from '../model/range';
+import type { SelectedNode, DomNode } from '../types';
+import { SplitType, SelectedNodeType } from '../types';
+import { hasClass, addClass as addElementClass, isHighlightWrapNode, removeAllClass } from '../util/dom';
 import {
     ID_DIVISION,
     getDefaultOptions,
@@ -90,8 +90,8 @@ export const getSelectedNodes = (
     const endOffset = end.offset;
 
     // split current node when the start-node and end-node is the same
-    if ($startNode === $endNode && $startNode instanceof Text) {
-        return getNodesIfSameStartEnd($startNode, startOffset, endOffset, exceptSelectors);
+    if ($startNode === $endNode && $startNode.nodeType === Node.TEXT_NODE) {
+        return getNodesIfSameStartEnd($startNode as Text, startOffset, endOffset, exceptSelectors);
     }
 
     const nodeStack: (ChildNode | Document | HTMLElement | Text)[] = [$root];

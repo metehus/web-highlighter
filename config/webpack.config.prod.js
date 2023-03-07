@@ -5,7 +5,7 @@
 const webpack = require('webpack');
 const {distDirname, basePath} = require('./paths.js');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const merge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const baseConfig = require('./base.config');
 const pkg = require('../package.json');
 const name = pkg.name;

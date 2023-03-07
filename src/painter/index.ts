@@ -4,13 +4,13 @@
  * No need to instantiate repeatly. A Highlighter instance will bind a Painter instance.
  */
 
-import type HighlightRange from '@src/model/range';
-import type { PainterOptions, HookMap } from '@src/types';
-import HighlightSource from '@src/model/source';
-import { wrapHighlight, getSelectedNodes, normalizeSiblingText } from '@src/painter/dom';
-import { getHighlightsByRoot, forEach, addClass, removeAllClass } from '@src/util/dom';
-import { ERROR } from '@src/types';
-import { initDefaultStylesheet } from '@src/painter/style';
+import type HighlightRange from '../model/range';
+import type { PainterOptions, HookMap } from '../types';
+import HighlightSource from '../model/source';
+import { wrapHighlight, getSelectedNodes, normalizeSiblingText } from '../painter/dom';
+import { getHighlightsByRoot, forEach, addClass, removeAllClass } from '../util/dom';
+import { ERROR } from '../types';
+import { initDefaultStylesheet } from '../painter/style';
 import {
     ID_DIVISION,
     eventEmitter,
@@ -18,7 +18,7 @@ import {
     INTERNAL_ERROR_EVENT,
     CAMEL_DATASET_IDENTIFIER,
     CAMEL_DATASET_IDENTIFIER_EXTRA,
-} from '@src/util/const';
+} from '../util/const';
 
 export default class Painter {
     options: PainterOptions;
@@ -107,7 +107,7 @@ export default class Painter {
 
         const hooks = this.hooks;
         const wrapTag = this.options.wrapTag;
-        const $spans = document.querySelectorAll<HTMLElement>(`${wrapTag}[data-${DATASET_IDENTIFIER}]`);
+        const $spans = this.options.$root.querySelectorAll<HTMLElement>(`${wrapTag}[data-${DATASET_IDENTIFIER}]`);
 
         // nodes to remove
         const $toRemove: HTMLElement[] = [];
@@ -136,7 +136,7 @@ export default class Painter {
 
         $toRemove.forEach($s => {
             const $parent = $s.parentNode;
-            const $fr = document.createDocumentFragment();
+            const $fr = this.options.$root.ownerDocument.createDocumentFragment();
 
             forEach($s.childNodes, ($c: Node) => $fr.appendChild($c.cloneNode(false)));
 

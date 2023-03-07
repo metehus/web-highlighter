@@ -1,14 +1,14 @@
-import type { DomNode, DomMeta, HookMap, HighlighterOptions } from '@src/types';
-import EventEmitter from '@src/util/event.emitter';
-import HighlightRange from '@src/model/range';
-import HighlightSource from '@src/model/source';
-import uuid from '@src/util/uuid';
-import Hook from '@src/util/hook';
-import getInteraction from '@src/util/interaction';
-import Cache from '@src/data/cache';
-import Painter from '@src/painter';
-import { eventEmitter, getDefaultOptions, INTERNAL_ERROR_EVENT } from '@src/util/const';
-import { ERROR, EventType, CreateFrom } from '@src/types';
+import type { DomNode, DomMeta, HookMap, HighlighterOptions } from './types';
+import EventEmitter from './util/event.emitter';
+import HighlightRange from './model/range';
+import HighlightSource from './model/source';
+import uuid from './util/uuid';
+import Hook from './util/hook';
+import getInteraction from './util/interaction';
+import Cache from './data/cache';
+import Painter from './painter';
+import { eventEmitter, getDefaultOptions, INTERNAL_ERROR_EVENT } from './util/const';
+import { ERROR, EventType, CreateFrom } from './types';
 import {
     addClass,
     removeClass,
@@ -19,7 +19,7 @@ import {
     getHighlightId,
     addEventListener,
     removeEventListener,
-} from '@src/util/dom';
+} from './util/dom';
 
 interface EventHandlerMap {
     [key: string]: (...args: any[]) => void;
@@ -230,11 +230,11 @@ export default class Highlighter extends EventEmitter<EventHandlerMap> {
     }
 
     private readonly _handleSelection = () => {
-        const range = HighlightRange.fromSelection(this.hooks.Render.UUID);
+        const range = HighlightRange.fromSelection(this.options.$root, this.hooks.Render.UUID);
 
         if (range) {
             this._highlightFromHRange(range);
-            HighlightRange.removeDomRange();
+            HighlightRange.removeDomRange(this.options.$root.ownerDocument.defaultView);
         }
     };
 
