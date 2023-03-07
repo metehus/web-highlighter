@@ -1,6 +1,6 @@
 {
   "name": "@metehus/web-highlighter",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "✨A no-runtime dependency lib for text highlighting & persistence on any website ✨🖍️",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

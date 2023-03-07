@@ -136,7 +136,7 @@ export default class Painter {
 
         $toRemove.forEach($s => {
             const $parent = $s.parentNode;
-            const $fr = this.options.$root.ownerDocument.createDocumentFragment();
+            const $fr = document.createDocumentFragment();
 
             forEach($s.childNodes, ($c: Node) => $fr.appendChild($c.cloneNode(false)));
 
@@ -156,7 +156,7 @@ export default class Painter {
             const newId = ids.shift();
 
             // find overlapped wrapper associated with "extra id"
-            const $overlapSpan = document.querySelector<HTMLElement>(
+            const $overlapSpan = this.options.$root.querySelector<HTMLElement>(
                 `${wrapTag}[data-${DATASET_IDENTIFIER}="${newId}"]`,
             );
 
